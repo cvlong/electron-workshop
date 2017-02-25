@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+const path = require('path')
 
 // npm install --save electron
 // npm run
@@ -6,6 +7,10 @@ const { app, BrowserWindow } = require('electron')
 let mainWindow;
 
 app.on('ready', () => {
+	const index = path.join(__dirname, 'index.html');
+
 	mainWindow = new BrowserWindow({});
-	mainWindow.loadURL('http://www.google.com');
+	// want a protocol
+	mainWindow.loadURL(`file:///${index}`);
+	// loadURL('file:///Users/christinalong/.../index.html')
 });
